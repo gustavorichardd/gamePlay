@@ -12,7 +12,7 @@ Destaco alguma das funcionalidades que a aplicação possui:
 * Componetização;
 * Utilização de SVG;
 * Fontes Personalizadas;
-* Navegação das telas;
+* Navegação entre telas com react navigation;
 * Listas horizontais e Verticais (FlatList)
 
 

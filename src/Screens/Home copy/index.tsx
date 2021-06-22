@@ -3,7 +3,7 @@ import { Text, View } from 'react-native';
 
 import styles from './styles';
 
-const Main = () => {
+const Home = () => {
   return (
     <View style={styles.container}>
       <Text>MEIN PEIGI</Text>
@@ -11,4 +11,4 @@ const Main = () => {
   );
 }
 
-export default Main;
+export default Home;
