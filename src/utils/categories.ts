@@ -1,6 +1,6 @@
-import RankedSvg from '../assets/ranked.svg'
-import DuelSvg from '../assets/duel.svg'
-import FunSvg from '../assets/fun.svg'
+import RankedSvg from '../assets/ranked.svg';
+import DuelSvg from '../assets/duel.svg';
+import FunSvg from '../assets/fun.svg';
 import TrainingSvg from '../assets/training.svg'
 
 export const categories = [

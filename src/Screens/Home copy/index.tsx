@@ -1,9 +1,9 @@
 import React from 'react';
 import { Text, View } from 'react-native';
 
-import styles from './styles';
+import { styles } from './styles';
 
-const Home = () => {
+export const Home = () => {
   return (
     <View style={styles.container}>
       <Text>MEIN PEIGI</Text>
@@ -11,4 +11,3 @@ const Home = () => {
   );
 }
 
-export default Home;
