@@ -8,7 +8,6 @@ export const styles = StyleSheet.create({
   banner: {
     width: '100%',
     height: 234,
-    marginBottom: 30
   },
   bannerContent: {
     flex: 1,

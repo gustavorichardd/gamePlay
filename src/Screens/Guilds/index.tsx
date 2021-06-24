@@ -23,6 +23,24 @@ export const Guilds = ({ handleGuildSelect }: Props) => {
       name: 'Ticatica',
       icon: null,
       owner: false
+    },
+    {
+      id: '3',
+      name: 'RocketSeat',
+      icon: null,
+      owner: false
+    },
+    {
+      id: '4',
+      name: 'Algum nome',
+      icon: null,
+      owner: false
+    },
+    {
+      id: '5',
+      name: 'Que seja diferente',
+      icon: null,
+      owner: false
     }
   ]
   return (
@@ -33,7 +51,9 @@ export const Guilds = ({ handleGuildSelect }: Props) => {
         renderItem={({ item }) => (
           <Guild data={item} onPress={() => handleGuildSelect(item)} />
         )}
-        ItemSeparatorComponent={() => <ListDivider />}
+        ItemSeparatorComponent={() => <ListDivider isCentered />}
+        ListHeaderComponent={() => <ListDivider isCentered />}
+        contentContainerStyle={{ paddingBottom: 68, paddingTop: 103 }}
         showsVerticalScrollIndicator={false}
         style={styles.guilds}
       />
