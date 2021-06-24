@@ -14,6 +14,6 @@ Destaco alguma das funcionalidades que a aplicação possui:
 * Fontes Personalizadas;
 * Navegação entre telas com react navigation;
 * Listas horizontais e Verticais (FlatList)
+* ContextAPI;
 * Autenticação utilizando OAuth2;
-* Context;
 
