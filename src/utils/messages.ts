@@ -1,0 +1,22 @@
+export const messages = [
+  'Somos feitos por nossas escolhas!',
+  'Posso falhar, mas não desistir.',
+  'Nunca torne-se um monstro para derrotar outro.',
+  'A escalada é longa, mas a vista vale a pena!',
+  'A dor é temporária, a vitória é eterna.',
+  'A paz é a maior mentira da história.',
+  'A piedade é um luxo e uma responsabilidade dos seres humanos.',
+  'Um coração gelado só precisa de um coração caloroso.',
+  'Não confunda piedade com fraqueza.',
+  'Quanto mais negra a noite, mais brilhantes são as estrelas.',
+  'Não importa quanto tempo você tem, mas como você o usa.',
+  'Há um prazer na loucura que só os loucos conhecem.',
+  'A única morte verdadeira é nunca ter vivido.',
+  'Caçar os fracos e sobreviver, caçar os fortes e viver.',
+  'Existem erros que você não pode fazer duas vezes.',
+  'Hoje é dia de vitória!',
+  'Tudo é possível!',
+  'Nossos feitos moldam o futuro',
+  'Nossa coragem, jamais deve tremular.',
+  'Para a arena!'
+]

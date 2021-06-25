@@ -4,7 +4,8 @@ import { theme } from '../../global/styles/theme'
 export const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    height: 40
   },
   user: {
     flexDirection: 'row'
@@ -22,7 +23,8 @@ export const styles = StyleSheet.create({
   },
   message: {
     fontFamily: theme.fonts.text400,
-    color: theme.colors.highlight
+    color: theme.colors.highlight,
+    width: 150
   },
 
 })

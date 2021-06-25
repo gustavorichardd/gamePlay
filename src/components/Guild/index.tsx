@@ -10,7 +10,7 @@ import { theme } from '../../global/styles/theme';
 export type GuildProps = {
   id: string;
   name: string;
-  icon?: string | null;
+  icon: string | null;
   owner: boolean
 }
 
@@ -25,7 +25,7 @@ export const Guild = ({ data, ...rest }: Props) => {
       activeOpacity={0.7}
       {...rest}
     >
-      <GuildIcon />
+      <GuildIcon guildId={data.id} iconId={data.icon} />
 
       <View style={styles.content}>
         <View>

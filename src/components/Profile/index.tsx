@@ -1,4 +1,5 @@
 import React from 'react';
+import { useEffect } from 'react';
 import { Text, View } from 'react-native';
 import { useAuth } from '../../hooks/auth';
 
@@ -6,8 +7,12 @@ import { Avatar } from '../Avatar';
 
 import { styles } from './styles';
 
+import { messages } from '../../utils/messages';
+
+
 export const Profile = () => {
   const { user } = useAuth();
+
   return (
     <View style={styles.container}>
 
@@ -24,7 +29,7 @@ export const Profile = () => {
           </Text>
         </View>
 
-        <Text style={styles.message}>Hoje é dia de vitória</Text>
+        <Text style={styles.message}>{messages[Math.floor(Math.random() * messages.length)]}</Text>
       </View>
     </View>
   );
