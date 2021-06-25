@@ -5,17 +5,16 @@ import { Text } from 'react-native';
 import { styles } from './styles';
 
 type Props = RectButtonProps & {
-  title: string
+  title: string,
+  color?: string
 }
 
-export const Button = ({ title, ...rest }: Props,) => {
-
+export const SmallButton = ({ color, title, ...rest }: Props,) => {
   return (
-    <RectButton style={styles.container} {...rest} >
+    <RectButton style={[styles.container, { backgroundColor: color }]} {...rest} >
       <Text style={styles.title}>
         {title}
       </Text>
-
     </RectButton>
   );
 }

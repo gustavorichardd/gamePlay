@@ -31,3 +31,8 @@ O gamePlay, vai conectar usuários para que possam marcar suas partidas dos mais
 * Autenticação utilizando OAuth2;
 * API Share para compartilhamento;
 
+### <p align="center"> E isto é a milha extra, caminhando sozinho! </p>
+
+* Validação para se o servidor não possui o widget habilitado.
+* Criação da tela de logout, usando modal.
+

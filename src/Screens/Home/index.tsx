@@ -3,6 +3,7 @@ import { View, FlatList } from 'react-native';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLLECTION_APPOINTMENTS } from '../../configs/database';
+import { RectButton } from 'react-native-gesture-handler';
 
 import { ButtonAdd } from '../../components/ButtonAdd';
 import { CategorySelect } from '../../components/CategorySelect';
@@ -11,16 +12,19 @@ import { ListHeader } from '../../components/ListHeader';
 import { Appointment, AppointmentProps } from '../../components/Appointment';
 import { ListDivider } from '../../components/ListDivider';
 import { Load } from '../../components/Load';
+import { SignOut } from '../SignOut';
 
 import { Background } from '../../components/Background';
 
 import { styles } from './styles';
+import { ModalViewSignOut } from '../../components/ModalViewSignOut';
 
 export const Home = () => {
   const [category, setCategory] = useState('');
   const navigation = useNavigation();
   const [loading, setLoading] = useState(true)
   const [appointments, setAppointments] = useState<AppointmentProps[]>([])
+  const [showSignOutModal, setShowSignOutModal] = useState(false)
 
   function handleCategorySelect(categoryId: string) {
     categoryId === category ? setCategory('') : setCategory(categoryId);
@@ -53,10 +57,19 @@ export const Home = () => {
     loadAppointments();
   }, [category]));
 
+  function handleOpenSignOutModal() {
+    setShowSignOutModal(true);
+  }
+  function handleCloseSignOutModal() {
+    setShowSignOutModal(false)
+  }
+
   return (
     <Background>
       <View style={styles.header}>
-        <Profile />
+        <RectButton onPress={handleOpenSignOutModal}>
+          <Profile />
+        </RectButton>
         <ButtonAdd onPress={handleAppointmentCreate} />
       </View>
 
@@ -85,6 +98,9 @@ export const Home = () => {
           </>
       }
 
+      <ModalViewSignOut visible={showSignOutModal} closeModal={handleCloseSignOutModal}>
+        <SignOut />
+      </ModalViewSignOut>
     </Background>
   );
 }

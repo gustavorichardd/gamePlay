@@ -8,7 +8,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import { COLLECTION_APPOINTMENTS } from '../../configs/database';
 import { Header } from '../../components/Header';
-import { ModalView } from '../../components/ModalView';
+import { ModalViewGuilds } from '../../components/ModalViewGuilds';
 import { CategorySelect } from '../../components/CategorySelect';
 import { GuildIcon } from '../../components/GuildIcon';
 import { SmallInput } from '../../components/SmallInput';
@@ -149,9 +149,9 @@ export const AppointmentCreate = () => {
         </ScrollView>
       </Background>
 
-      <ModalView visible={openGuildsModal} closeModal={handleCloseGuildsModal} >
+      <ModalViewGuilds visible={openGuildsModal} closeModal={handleCloseGuildsModal} >
         <Guilds handleGuildSelect={handleGuildSelect} />
-      </ModalView>
+      </ModalViewGuilds>
     </KeyboardAvoidingView>
   );
 }

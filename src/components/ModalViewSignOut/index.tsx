@@ -1,8 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Modal, View, ModalProps, TouchableWithoutFeedback } from 'react-native';
-
 import { Background } from '../Background';
-
 import { styles } from './styles';
 
 type Props = ModalProps & {
@@ -10,11 +8,11 @@ type Props = ModalProps & {
   closeModal: () => void;
 }
 
-export const ModalView = ({ closeModal, children, ...rest }: Props) => {
+export const ModalViewSignOut = ({ closeModal, children, ...rest }: Props) => {
   return (
     <Modal
       transparent
-      animationType='slide'
+      animationType='fade'
       statusBarTranslucent
       {...rest}
     >
@@ -22,7 +20,6 @@ export const ModalView = ({ closeModal, children, ...rest }: Props) => {
         <View style={styles.overlay}>
           <View style={styles.container}>
             <Background>
-              <View style={styles.bar} />
               {children}
             </Background>
           </View>
