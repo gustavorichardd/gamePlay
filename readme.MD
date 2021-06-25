@@ -21,10 +21,13 @@ O gamePlay, vai conectar usuários para que possam marcar suas partidas dos mais
 * Por exemplo na parte de criação do modal com os servidores, criamos uma tipagem para cada servidor, e neste servidor usamos as propriedades do TouchableOpacity além das que criamos;
 * Foi utilizada gradiente também, utilizando a lib **expo-linear-gradient**;
 * Componetização: diversos componentes criados, e reutilizados. Possibilitando uma prática bem ampla;
+* Consumo de API rest através da lib **AXIOS**;
 * Utilização de SVG;
 * Fontes Personalizadas;
 * Navegação entre telas com react navigation;
 * Listas horizontais e Verticais (FlatList);
+* Linking para abrir outras aplicações, neste caso, o discord.
 * ContextAPI;
 * Autenticação utilizando OAuth2;
+* API Share para compartilhamento;
 
