@@ -60,4 +60,3 @@ export const Guilds = ({ handleGuildSelect }: Props) => {
     </View>
   );
 }
-
