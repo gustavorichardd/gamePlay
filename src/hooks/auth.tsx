@@ -65,7 +65,6 @@ function AuthProvider({ children }: AuthProviderProps) {
         };
 
         await AsyncStorage.setItem(COLLECTION_USERS, JSON.stringify(userData))
-
         setUser(userData)
       }
     } catch {
@@ -76,7 +75,6 @@ function AuthProvider({ children }: AuthProviderProps) {
   }
 
   async function signOut() {
-    console.log('aqui')
     setUser({} as User);
     await AsyncStorage.removeItem(COLLECTION_USERS)
   }

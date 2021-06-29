@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Alert } from 'react-native';
+import { View, Text, Alert, TouchableOpacity } from 'react-native';
 import { SmallButton } from '../../components/SmallButton';
 import { theme } from '../../global/styles/theme';
 import { useAuth } from '../../hooks/auth';
@@ -11,8 +11,7 @@ export const SignOut = () => {
   const { primary, secondary30 } = theme.colors
 
   async function handleSignOut() {
-    // await signOut();
-    console.log('asd')
+    await signOut();
   }
 
   return (
@@ -22,7 +21,10 @@ export const SignOut = () => {
       <View style={styles.buttons}>
         <SmallButton title='Não' color={secondary30} onPress={handleSignOut} />
 
-        <SmallButton title='Sim' color={primary} onPress={handleSignOut} />
+        <TouchableOpacity onPress={handleSignOut}>
+          <SmallButton title='Sim' color={primary} />
+        </TouchableOpacity>
+
       </View>
     </View>
   );
