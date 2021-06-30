@@ -1,7 +1,6 @@
 import React from 'react';
-import { Text, View, Alert } from 'react-native';
+import { Text, View } from 'react-native';
 import { useAuth } from '../../hooks/auth';
-import { RectButton, RectButtonProps } from 'react-native-gesture-handler';
 
 import { Avatar } from '../Avatar';
 
@@ -10,7 +9,7 @@ import { styles } from './styles';
 import { messages } from '../../utils/messages';
 
 
-export const Profile = ({ ...rest }: RectButtonProps) => {
+export const Profile = () => {
   const { user } = useAuth();
 
   return (

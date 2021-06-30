@@ -17,19 +17,24 @@ import { Button } from '../../components/Button';
 import { Guilds } from '../Guilds';
 import { GuildProps } from '../../components/Guild';
 import { Background } from '../../components/Background';
+import { format } from 'date-fns'
 
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
+
 
 export const AppointmentCreate = () => {
   const [category, setCategory] = useState('');
   const [openGuildsModal, setOpenGuildsModal] = useState(false)
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps)
 
-  const [day, setDay] = useState('');
-  const [month, setMonth] = useState('');
-  const [hour, setHour] = useState('');
-  const [minute, setMinute] = useState('');
+  const [date, setDate] = useState(new Date())
+
+  // const [day, setDay] = useState('');
+  // const [month, setMonth] = useState('');
+  // const [hour, setHour] = useState('');
+  // const [minute, setMinute] = useState('');
+
   const [description, setDescription] = useState('');
 
   const navigation = useNavigation();
@@ -56,7 +61,7 @@ export const AppointmentCreate = () => {
       id: uuid.v4(),
       guild,
       category,
-      date: `${day}/${month} às ${hour}:${minute}h`,
+      date: `${date.getDate()}/${date.getMonth() + 1} às ${date.getHours()}:${date.getMinutes()}h`,
       description
     };
     const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
@@ -109,20 +114,21 @@ export const AppointmentCreate = () => {
 
               <View>
                 <Text style={[styles.label, { marginBottom: 12 }]}>Dia e mês</Text>
-                <View style={styles.column}>
-                  <SmallInput maxLength={2} onChangeText={setDay} value={day} />
-                  <Text style={styles.divider}>/</Text>
-                  <SmallInput maxLength={2} onChangeText={setMonth} value={month} />
-                </View>
+                <SmallInput
+                  pickerType='date'
+                  state={date}
+                  setState={setDate}
+
+                />
               </View>
 
               <View>
                 <Text style={[styles.label, { marginBottom: 12 }]}>Hora e minuto</Text>
-                <View style={styles.column}>
-                  <SmallInput maxLength={2} onChangeText={setHour} value={hour} />
-                  <Text style={styles.divider}>:</Text>
-                  <SmallInput maxLength={2} onChangeText={setMinute} value={minute} />
-                </View>
+                <SmallInput
+                  pickerType='time'
+                  state={date}
+                  setState={setDate}
+                />
               </View>
             </View>
 

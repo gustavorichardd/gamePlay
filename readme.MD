@@ -35,4 +35,4 @@ O gamePlay, vai conectar usuários para que possam marcar suas partidas dos mais
 
 * Validação para se o servidor não possui o widget habilitado.
 * Criação da tela de logout, usando modal.
-
+* Validação para as datas e horas da partida. Foi utilizado o componente DateTimerPicker para isto.

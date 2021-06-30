@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, Image, View } from 'react-native';
-import { RectButton, RectButtonProps } from 'react-native-gesture-handler'
+import { Image, View } from 'react-native';
 
 import DiscordSvg from '../../assets/discord.svg'
 import { styles } from './styles';
@@ -13,7 +12,6 @@ type Props = {
 }
 
 export const GuildIcon = ({ guildId, iconId }: Props) => {
-  // const uri = 'https://logodownload.org/wp-content/uploads/2017/11/discord-logo-5.png'
   const uri = `${CDN_IMAGE}/icons/${guildId}/${iconId}.png`
 
   return (

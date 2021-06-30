@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import { View, FlatList } from 'react-native';
 
 import { Guild, GuildProps } from '../../components/Guild';
 import { Load } from '../../components/Load';

@@ -43,12 +43,10 @@ export const AppointmentDetails = () => {
     try {
       const response = await api.get(`/guilds/${guildSelected.guild.id}/widget.json`);
       setWidget(response.data);
-      console.log(response, 'aquiii')
       setLoading(false);
     } catch (err) {
       Alert.alert('Problemas ao conectar. O Widget pode estar desabilitado...');
       navigation.goBack();
-      console.log(err)
     }
   }
 
