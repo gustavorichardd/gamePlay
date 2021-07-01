@@ -33,11 +33,7 @@ export const Header = ({ title, action }: Props) => {
         {title}
       </Text>
 
-      {
-        action
-          ? <View>{action}</View>
-          : <View style={{ width: 24 }} />
-      }
+      {action}
     </LinearGradient>
   );
 }

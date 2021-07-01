@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
+import { Text, View, ScrollView, KeyboardAvoidingView, Platform, Alert } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import { Feather } from '@expo/vector-icons';
 import uuid from 'react-native-uuid'
@@ -27,13 +27,7 @@ export const AppointmentCreate = () => {
   const [category, setCategory] = useState('');
   const [openGuildsModal, setOpenGuildsModal] = useState(false)
   const [guild, setGuild] = useState<GuildProps>({} as GuildProps)
-
   const [date, setDate] = useState(new Date())
-
-  // const [day, setDay] = useState('');
-  // const [month, setMonth] = useState('');
-  // const [hour, setHour] = useState('');
-  // const [minute, setMinute] = useState('');
 
   const [description, setDescription] = useState('');
 
@@ -57,20 +51,24 @@ export const AppointmentCreate = () => {
   }
 
   async function handleSave() {
-    const newAppointment = {
-      id: uuid.v4(),
-      guild,
-      category,
-      date: `${date.getDate()}/${date.getMonth() + 1} às ${date.getHours()}:${date.getMinutes()}h`,
-      description
-    };
-    const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+    if (!category || !guild || !description.trim()) {
+      Alert.alert('Opa!', 'Por favor, preencha todos os campos para poder salvar o agendamento!')
+    } else {
+      const newAppointment = {
+        id: uuid.v4(),
+        guild,
+        category,
+        date: `${date.getDate()}/${date.getMonth() + 1} às ${date.getHours()}:${date.getMinutes()}h`,
+        description
+      };
+      const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
 
-    const appointments = storage ? JSON.parse(storage) : [];
+      const appointments = storage ? JSON.parse(storage) : [];
 
-    await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify([...appointments, newAppointment]));
+      await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify([...appointments, newAppointment]));
 
-    navigation.navigate('Home')
+      navigation.navigate('Home')
+    }
   }
 
   return (

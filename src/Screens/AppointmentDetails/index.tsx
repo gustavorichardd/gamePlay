@@ -20,6 +20,8 @@ import { Options } from '../../components/Options';
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
 import BannerImg from '../../assets/banner.png'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { COLLECTION_APPOINTMENTS } from '../../configs/database';
 
 type Params = {
   guildSelected: AppointmentProps
@@ -48,8 +50,24 @@ export const AppointmentDetails = () => {
       setWidget(response.data);
       setLoading(false);
     } catch (err) {
-      Alert.alert('Problemas ao conectar. O Widget pode estar desabilitado...');
-      navigation.goBack();
+      Alert.alert('Ops!', 'Problemas ao conectar. O Widget pode estar desabilitado. Deseja remover o agendamento?', [
+        {
+          text: 'Sim!',
+          onPress: () => handleRemove()
+        },
+        {
+          text: 'Não',
+          onPress: () => { }
+        }
+      ]);
+      setWidget({
+        id: '',
+        name: '',
+        instant_invite: '',
+        members: [],
+        presence_count: 0
+      })
+      setLoading(false);
     }
   }
 
@@ -65,6 +83,19 @@ export const AppointmentDetails = () => {
       message,
       url: widget.instant_invite
     });
+  }
+
+  async function handleRemove() {
+    try {
+      const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS)
+      const appointments = storage ? JSON.parse(storage) : [];
+      const newAppointments = appointments.filter((item: AppointmentProps) => item.id != guildSelected.id)
+      await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify(newAppointments));
+    } catch (err) {
+      console.log('Erro ao remover item do storage:', err)
+    } finally {
+      navigation.navigate('Home')
+    }
   }
 
   function handleOpenGuild() {
@@ -85,7 +116,6 @@ export const AppointmentDetails = () => {
     <Background>
       <Header title='Detalhes'
         action={
-          guildSelected.guild.owner &&
           <BorderlessButton onPress={handleOpenOptionsModal} >
             <SimpleLineIcons name='options-vertical' size={24} color={theme.colors.primary} />
           </BorderlessButton>

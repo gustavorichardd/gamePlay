@@ -31,6 +31,8 @@ type OptionsProps = {
 
 export const Options = ({ data, idAppointment }: OptionsProps) => {
   const navigation = useNavigation()
+  const route = useRoute();
+  const { guildSelected } = route.params as Params;
 
   function handleShareInvitation() {
     const message = Platform.OS === 'ios'
@@ -41,7 +43,6 @@ export const Options = ({ data, idAppointment }: OptionsProps) => {
       url: data.instant_invite
     });
     navigation.navigate('Home')
-
   }
 
 
@@ -61,9 +62,13 @@ export const Options = ({ data, idAppointment }: OptionsProps) => {
   return (
     <View style={styles.container}>
 
-      <TouchableOpacity onPress={handleShareInvitation} >
-        <Fontisto name='share' size={24} color={theme.colors.primary} />
-      </TouchableOpacity>
+      {
+        guildSelected.guild.owner &&
+        <TouchableOpacity onPress={handleShareInvitation} >
+          <Fontisto name='share' size={24} color={theme.colors.primary} />
+        </TouchableOpacity>
+      }
+
 
       <TouchableOpacity onPress={handleRemove} >
         <Fontisto name='trash' size={24} color={theme.colors.primary} />
