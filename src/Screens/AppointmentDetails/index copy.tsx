@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, ImageBackground, FlatList, Alert, Share, Platform } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
-import { SimpleLineIcons } from '@expo/vector-icons';
+import { Fontisto } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { AppointmentProps } from '../../components/Appointment';
 import { api } from '../../services/api';
@@ -14,8 +14,6 @@ import { Member, MemberProps } from '../../components/Member';
 import { ListDivider } from '../../components/ListDivider';
 import { ButtonIcon } from '../../components/ButtonIcon'
 import { Load } from '../../components/Load';
-import { ModalViewOptions } from '../../components/ModalViewOptions';
-import { Options } from '../../components/Options';
 
 import { theme } from '../../global/styles/theme';
 import { styles } from './styles';
@@ -37,7 +35,6 @@ export const AppointmentDetails = () => {
   const route = useRoute();
   const { guildSelected } = route.params as Params;
   const navigation = useNavigation();
-  const [showOptionsModal, setShowOptionsModal] = useState(false)
 
   const [widget, setWidget] = useState<GuildWidgetProps>({} as GuildWidgetProps)
   const [loading, setLoading] = useState(true)
@@ -71,23 +68,14 @@ export const AppointmentDetails = () => {
     Linking.openURL(widget.instant_invite)
   }
 
-  function handleOpenOptionsModal() {
-    setShowOptionsModal(true)
-  }
-
-
-  function handleCloseOptionsModal() {
-    setShowOptionsModal(false)
-  }
-
 
   return (
     <Background>
       <Header title='Detalhes'
         action={
           guildSelected.guild.owner &&
-          <BorderlessButton onPress={handleOpenOptionsModal} >
-            <SimpleLineIcons name='options-vertical' size={24} color={theme.colors.primary} />
+          <BorderlessButton onPress={handleShareInvitation} >
+            <Fontisto name='share' size={24} color={theme.colors.primary} />
           </BorderlessButton>
         }
       />
@@ -124,10 +112,6 @@ export const AppointmentDetails = () => {
           <ButtonIcon title='Entrar na partida' onPress={handleOpenGuild} />
         </View>
       }
-
-      <ModalViewOptions visible={showOptionsModal} closeModal={handleCloseOptionsModal}>
-        <Options data={widget} />
-      </ModalViewOptions>
     </Background>
   );
 }

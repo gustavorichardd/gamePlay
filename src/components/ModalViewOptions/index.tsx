@@ -8,11 +8,11 @@ type Props = ModalProps & {
   closeModal: () => void;
 }
 
-export const ModalViewSignOut = ({ closeModal, children, ...rest }: Props) => {
+export const ModalViewOptions = ({ closeModal, children, ...rest }: Props) => {
   return (
     <Modal
       transparent
-      animationType='slide'
+      animationType='fade'
       statusBarTranslucent
       {...rest}
     >
@@ -24,6 +24,7 @@ export const ModalViewSignOut = ({ closeModal, children, ...rest }: Props) => {
             </Background>
           </View>
         </View>
+
       </TouchableWithoutFeedback>
     </Modal>
 
