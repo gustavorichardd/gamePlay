@@ -31,9 +31,7 @@ export const Home = () => {
   }
 
   function handleAppointmentDetails(guildSelected: AppointmentProps) {
-
     navigation.navigate('AppointmentDetails', { guildSelected })
-
   }
 
   function handleAppointmentCreate() {

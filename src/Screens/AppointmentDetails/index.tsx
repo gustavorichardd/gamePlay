@@ -126,7 +126,7 @@ export const AppointmentDetails = () => {
       }
 
       <ModalViewOptions visible={showOptionsModal} closeModal={handleCloseOptionsModal}>
-        <Options data={widget} />
+        <Options data={widget} idAppointment={guildSelected.id} />
       </ModalViewOptions>
     </Background>
   );

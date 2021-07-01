@@ -5,7 +5,7 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { COLLECTION_APPOINTMENTS } from '../../configs/database';
-import { AppointmentProps } from '../Appointment';
+import { Appointment, AppointmentProps } from '../Appointment';
 import { MemberProps } from '../Member';
 
 import { styles } from './styles'
@@ -26,9 +26,10 @@ type GuildWidgetProps = {
 
 type OptionsProps = {
   data: GuildWidgetProps;
+  idAppointment: string;
 }
 
-export const Options = ({ data }: OptionsProps) => {
+export const Options = ({ data, idAppointment }: OptionsProps) => {
   const navigation = useNavigation()
 
   function handleShareInvitation() {
@@ -45,17 +46,17 @@ export const Options = ({ data }: OptionsProps) => {
 
 
   async function handleRemove() {
-    const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-    console.log('@@@@@@@@@@')
-    console.log(storage)
-    console.log('##########')
-    console.log(data)
-    console.log(data)
-    console.log('@@@@@@@@@@')
-    // navigation.navigate('Home')
+    try {
+      const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS)
+      const appointments = storage ? JSON.parse(storage) : [];
+      const newAppointments = appointments.filter((item: AppointmentProps) => item.id != idAppointment)
+      await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify(newAppointments));
+    } catch (err) {
+      console.log('Erro ao remover item do storage:', err)
+    } finally {
+      navigation.navigate('Home')
+    }
   }
-
-
 
   return (
     <View style={styles.container}>
